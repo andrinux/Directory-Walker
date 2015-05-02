@@ -7,6 +7,7 @@ import commands
 
 def display(path, level):
   #Try the compression here and get the average compression ratio
+  #The indent, blank symbols is the level
   for i in range(0, level):
     print ' ',
   if(os.path.isdir(path)):
