@@ -9,6 +9,19 @@ import math
 
 typeMap = dict();
 
+
+def haveBin(path):
+	if "bin" in path:
+		return True
+	else:
+		return False
+def isCache(path):
+	if "cache" in path and (not 'dalvik' in path):
+		return True
+	else:
+		return False
+
+
 # usage: path must be a path of a ordinary file, not directory
 def getType(path):
 	if(os.path.isdir(path)):
@@ -21,7 +34,14 @@ def getType(path):
 		curType = 'none'
 	else:
 		curType = filetype[-1]
+
+	if haveBin(path):
+		curType = "bin"
+	
 	return curType;
+
+
+
 
 # Return Value is in Byte/KByte?
 # Should be a multiple times of 4KB
@@ -61,7 +81,7 @@ def LoopDir(rootDir,level):
       updateMap(path)
 
 
-rootDir = '/home/xuebinzhang/zlib-1.2.8/';
+rootDir = '/media/Seagate/Nexus7Partitions/5.0_50';
 level = 0;
 LoopDir(rootDir,level)
 
@@ -69,6 +89,7 @@ LoopDir(rootDir,level)
 Map = sorted(typeMap.iteritems(), key=lambda d:d[1], reverse = True)
 for x in Map:
 	print x
+print sum(typeMap.values())
 
 
 
