@@ -64,9 +64,13 @@ def LoopDir(rootDir,level):
 rootDir = '/home/xuebinzhang/zlib-1.2.8/';
 level = 0;
 LoopDir(rootDir,level)
-#for x in Map:
-#	print x + " : "+str(typeMap[x])
 
-Map= sorted(typeMap.iteritems(), key=lambda d:d[1], reverse = True)
-print Map
+# Sort the result and print
+Map = sorted(typeMap.iteritems(), key=lambda d:d[1], reverse = True)
+for x in Map:
+	print x
+
+
+
+
 
