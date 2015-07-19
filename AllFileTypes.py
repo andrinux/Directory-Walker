@@ -5,7 +5,7 @@
 import os
 import sys
 import commands
-
+import math
 
 typeMap = dict();
 
@@ -23,11 +23,12 @@ def getType(path):
 		curType = filetype[-1]
 	return curType;
 
-#Return Value is in Byte/KByte?
+# Return Value is in Byte/KByte?
+# Should be a multiple times of 4KB
 def getSize(path):
-	filesize =4 * float( os.path.getsize(path)/4096)
-	if(filesize < 4):
-		filesize = 4
+	filesize = 4 * float (os.path.getsize(path)/4096.0)
+	filesize = math.ceil(filesize)
+	#filesize = os.path.getsize(path);
 	return filesize
 
 
@@ -60,8 +61,12 @@ def LoopDir(rootDir,level):
       updateMap(path)
 
 
-rootDir = '/home/xuebinzhang/zlib-1.2.8/win32';
+rootDir = '/home/xuebinzhang/zlib-1.2.8/';
 level = 0;
 LoopDir(rootDir,level)
+#for x in Map:
+#	print x + " : "+str(typeMap[x])
 
-print typeMap
+Map= sorted(typeMap.iteritems(), key=lambda d:d[1], reverse = True)
+print Map
+
