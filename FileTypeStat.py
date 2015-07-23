@@ -9,6 +9,9 @@ import commands
 #.db .db-journal
 # obb ogg txt ps ttf
 
+# Better to use a associated container to find all the existing file types.
+# See AllFileType.py
+
 #####################################################################
 #
 #This file has two functions, for cache files and other regular files

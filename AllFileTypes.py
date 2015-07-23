@@ -21,6 +21,20 @@ def isCache(path):
 	else:
 		return False
 
+def isDb(path):
+	if "db" in path:
+		return True;
+	else:
+		return False;
+		
+def isMultimedia(path):
+	MMType =  set(["mp3", "mp4", "avi", "mpg", "jpg", "bmp", "png", "tiff", "ogg", "obb"])
+	curType =  getType(path);
+	if curType in MMType:
+		return true;
+	else:
+		return False
+
 
 # usage: path must be a path of a ordinary file, not directory
 def getType(path):
