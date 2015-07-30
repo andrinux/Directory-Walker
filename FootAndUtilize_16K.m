@@ -5,8 +5,8 @@ clear; clc
 % This is used to calculate the Footprint Reduction and Utilizaiton Ratio
 % for 16kB packing.
 
-withApkPeel=load('~/sum-Peel-5.0_30.txt');
-noApkPeel=load('~/LoopDir/Android-5.0_30-ratio.txt');
+withApkPeel=load('~/sum-Peel-5.0.txt');
+noApkPeel=load('~/LoopDir/Android-5.0-ratio.txt');
 noApkPeelLen=length(noApkPeel);
 
 LZ=noApkPeel(:,1);
@@ -77,7 +77,8 @@ disp('LZ 16KB Packing Footprint Reduction:')
 1-4*length(Stored)/noApkPeelLen
 disp('LZ 16KB Packing Utilization Ratio:')
 sum(Combined)/length(Combined)/4
-
+disp('LZ 16KB Packing _All_ Utilization Ratio:')
+sum(Stored)/length(Stored)/4
 
 
 
@@ -134,6 +135,8 @@ disp('LZ+Huffman 16KB Packing Footprint Reduction:')
 1-4*length(Stored)/noApkPeelLen
 disp('LZ+Huffman 16KB Packing Utilization Ratio:')
 sum(Combined)/length(Combined)/4
+disp('LZ_Huffman 16KB Packing _All_ Utilization Ratio:')
+sum(Stored)/length(Stored)/4
 
 
 %====================LZ+Huffman WITH APK Peeling===================
@@ -190,3 +193,5 @@ disp('LZ+Huffman+APkPeeling16KB Packing Footprint Reduction:')
 1-4*length(Stored)/noApkPeelLen
 disp('LZ+Huffman+APkPeeling 16KB Packing Utilization Ratio:')
 sum(Combined)/length(Combined)/4
+disp('LZ+Huffman+APkPeeling 16KB Packing _All_ Utilization Ratio:')
+sum(Stored)/length(Stored)/4
