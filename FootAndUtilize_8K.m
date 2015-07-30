@@ -5,8 +5,16 @@ clear; clc
 % This is used to calculate the Footprint Reduction and Utilizaiton Ratio
 % for 8kB packing.
 
-withApkPeel=load('~/sum-Peel-5.0_10.txt');
-noApkPeel=load('~/LoopDir/Android-5.0_10-ratio.txt');
+
+for Apps=20:10:50
+
+disp(Apps);
+filename1=['~/sum-Peel-5.0_' num2str(Apps) '.txt']
+filename2=['~/LoopDir/Android-5.0_' num2str(Apps) '-ratio.txt']
+
+
+withApkPeel=load(filename1);
+noApkPeel=load(filename2);
 noApkPeelLen=length(noApkPeel);
 
 LZ=noApkPeel(:,1);
@@ -144,4 +152,4 @@ disp('LZ+Huffman+APK PEEL 8KB Packing Footprint Reduction:')
 disp('LZ+Huffman+APK PEEL 8KB Packing Utilization Ratio:')
 sum(Combined)/length(Combined)/2
 
-
+end
