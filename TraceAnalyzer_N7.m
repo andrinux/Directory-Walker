@@ -6,12 +6,16 @@
 %The Action Type inside trace should be 'C'
 
 % clear; clc
+% Choose the trace item type here:
+% R is for Read, W is for Write, WS for synchronous write
+% Actions include A-D-C
 AnalyzeType='R';
 ActionType='D';
 
 %% Open file and preprocess
 filename='./Sep15/N7/R_Complete.log'
 [Time Action Type BlkNo BlkCnt ProcId Proc BlkType FileName]= ParseData(filename);
+
 disp('Reading Analyzing Begin......')
 disp('================R/W ratio=========================')
 Idx=find(strcmp(Action,ActionType) & strcmp(Type, 'R') & BlkCnt~=0);
