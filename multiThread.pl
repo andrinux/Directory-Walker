@@ -6,8 +6,8 @@ use strict;
 use Net::Telnet;
 
 use constant Timeout =>'5';
-use constant USER => 'XuebinZhang';
-use constant PASS => '19900701';
+use constant USER => 'XXXXXXX';
+use constant PASS => 'XXXXXXX';
 
 my $pid = fork();
 
@@ -21,7 +21,7 @@ elsif ($pid == 0) {
 	my $telnet=Net::Telnet->new(
         Timeout =>10,
         Prompt =>'/./',
-        host =>'128.113.224.116'
+        host =>'XXX.XXX.XXX.XXX'
         );
 	print "Perl Telnet Test on W530.\n";
 
