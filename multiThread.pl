@@ -1,40 +1,41 @@
-#!/usr/bin/perl -w
-# Verified on Windows 8
-# Need to install Net::Telnet module
-#
-use strict;
-use Net::Telnet;
+	#!/usr/bin/perl -w
 
-use constant Timeout =>'5';
-use constant USER => 'XXXXXXX';
-use constant PASS => 'XXXXXXX';
+	use strict;
+	use Net::Telnet;
+	use warnings;
 
-my $pid = fork();
+	use constant Timeout =>'5';
+	use constant USER => 'XXX';
+	use constant PASS => 'XXX';
 
-if (not defined $pid) {
-	print "resources not avilable. ";
-} 
-elsif ($pid == 0) {
-	print "This is the child process.\n";
-	sleep 1;
-	#Run telnet
-	my $telnet=Net::Telnet->new(
-        Timeout =>10,
-        Prompt =>'/./',
-        host =>'XXX.XXX.XXX.XXX'
-        );
-	print "Perl Telnet Test on W530.\n";
+	my $pid = fork();
 
-	$telnet->dump_log('log');
-	$telnet->login(USER,PASS);
-	$telnet->waitfor('/\>/');#Wait for cmd charater
-	my @lines=$telnet->cmd("ipconfig");
-	print @lines;
+	if (not defined $pid) {
+		print "resources not avilable. ";
+	} 
+	elsif ($pid == 0) {
+		print "This is the child process.\n";
+		#Run telnet
+		my $telnet=Net::Telnet->new(
+			Timeout =>10,
+			prompt=>'/./',
+			host =>'XXX.113.XXX.XXX'
+			);
+		print "Perl Telnet Test on Dell.\n";
 
-	#end telnet
-	exit(0);
-} else {
-	print "IM THE Parent Process.\n";
-	waitpid($pid,1);
-}
-	print "END ALL Process.";
+		$telnet->dump_log('log');
+		$telnet->login(USER,PASS);
+		$telnet->waitfor('/\>/');#Wait for cmd charater
+		my @lines=$telnet->cmd("dir");
+			print @lines;
+		$telnet->waitfor('/\>/');#Wait for cmd charater
+		my @line=$telnet->cmd("ipconfig");
+			print @lines;
+		$telnet->waitfor('/\>/');#Wait for cmd charater
+		#end telnet
+		exit(0);
+	} else {
+		print "IM THE Parent Process.\n";
+		waitpid($pid,0);
+	}
+		print "END ALL Process.";
