@@ -10,13 +10,7 @@ clear;clc
 WHOLE_PAGE_LENGTH = 4096 * 9/8 * 8;
 Header_Length =4*8+70; %bits
 
-Data = load('./DbUpdate.txt');
 
-%% METADATA
-% DeltaSizes =  [Data(:,2); Data(:,2)]; %1000 versions of delta
-% DeltaSizes=[DeltaSizes; DeltaSizes; DeltaSizes;DeltaSizes;DeltaSizes];
-% R_data_Set = load('R_data_SetDyn.mat');
-% R_data_Set = R_data_Set.R_data_Set;
 
 %% EMULATING
 %Delta Compression Ratio
