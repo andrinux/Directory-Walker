@@ -1,3 +1,8 @@
+% MATLAB code.
+% Parse the trace files from FIU IODedup.
+% the format of trace files is defined in the help document.
+%
+
 function [time,pid1,process,LBA,mysize,type,ASU,VarName8] = ParseHomeTrace(filename, startRow, endRow)
 %IMPORTFILE Import numeric data from a text file as column vectors.
 %   [TIME,PID1,PROCESS,LBA,SIZE,TYPE,VARNAME7,VARNAME8] =
