@@ -1,4 +1,4 @@
-function [time,pid1,process,LBA,size,type,ASU,VarName8] = ParseHomeTrace(filename, startRow, endRow)
+function [time,pid1,process,LBA,mysize,type,ASU,VarName8] = ParseHomeTrace(filename, startRow, endRow)
 %IMPORTFILE Import numeric data from a text file as column vectors.
 %   [TIME,PID1,PROCESS,LBA,SIZE,TYPE,VARNAME7,VARNAME8] =
 %   IMPORTFILE(FILENAME) Reads data from text file FILENAME for the default
@@ -65,7 +65,7 @@ time = dataArray{:, 1};
 pid1 = dataArray{:, 2};
 process = dataArray{:, 3};
 LBA = dataArray{:, 4};
-size = dataArray{:, 5};
+mysize = dataArray{:, 5};
 type = dataArray{:, 6};
 ASU = dataArray{:, 7};
 VarName8 = dataArray{:, 8};
